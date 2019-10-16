@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Auto Rclone Websocket Server Test </title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <button onclick="getDirectory()">Get Directory Info</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  <script>
+    var socket = io();
+    function getDirectory() {
+      socket.send("ls");
+      socket.on("message", function(data) {
+        console.log("get server data: ", data);
+      })
+    }
+  </script>
+</body>
+
+</html>
